@@ -5,6 +5,7 @@ for other classes.
 """
 import uuid
 from datetime import datetime
+import models
 
 
 class BaseModel:
@@ -46,6 +47,7 @@ class BaseModel:
             self.id = str(uuid.uuid4())  # Assign unique id to self.id
             self.created_at = datetime.now()  # set to current date and time
             self.updated_at = self.created_at
+            models.storage.new(self)  # only called when new instance created
 
     def __str__(self):
         """
@@ -62,6 +64,7 @@ class BaseModel:
         """
         # Links the storage engine save method in future tasks.
         self.updated_at = datetime.now()
+        models.storage.save()
 
     def to_dict(self):
         """
