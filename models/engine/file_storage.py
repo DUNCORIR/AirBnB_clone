@@ -6,6 +6,7 @@ deserializes JSON file to instances.
 import json
 from models.base_model import BaseModel
 import os
+from models.user import User
 
 
 class FileStorage:
@@ -40,5 +41,7 @@ class FileStorage:
                     class_name = value["__class__"]
                     if class_name == "BaseModel":
                         self.__objects[key] = BaseModel(**value)
+                    elif class_name == "User":  # Check for user class
+                        self.__objects[key] = User(**value)
         except FileNotFoundError:
             pass

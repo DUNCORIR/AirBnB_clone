@@ -6,6 +6,7 @@ import cmd
 import shlex  # For splitting command arguments safely
 from models.base_model import BaseModel
 from models import storage
+from models.user import User
 
 
 # Define BaseModel
@@ -14,7 +15,10 @@ class HBNBCommand(cmd.Cmd):
     prompt = "(hbnb) "
 
     # Define classes dict at class level
-    classes = {"BaseModel": BaseModel}
+    classes = {
+        "BaseModel": BaseModel,
+        "User": User,
+    }
 
     def do_quit(self, arg):
         """Quit command to exit the program"""
