@@ -44,21 +44,24 @@ class HBNBCommand(cmd.Cmd):
         pass
 
     def do_create(self, arg):
-        """Create a new instance of BaseModel, save it, and print the id"""
-        if not arg:
+        """Create a new instance of class, save it, and print the id"""
+        args = arg.split()
+        if len(args) == 0:
             print("** class name missing **")
             return
-        elif arg not in self.classes:
+        elif args[0] not in self.classes:
             print("** class doesn't exist **")
             return
-        else:
-            obj = self.classes[arg]()
-            obj.save()
-            print(obj.id)
+        # create the objects and store it in storage system
+        class_name = args[0]
+        new_object = storage.class_map[class_name]()
+        storage.new(new_object)
+        storage.save()
+        print(new_object.id)
 
     def do_show(self, arg):
         """ Show an instance of BaseModel based on its id"""
-        args = shlex.split(arg)
+        args = arg.split()
         if len(args) == 0:
             print("** class name missing **")
             return
@@ -70,33 +73,10 @@ class HBNBCommand(cmd.Cmd):
             return
 
         key = f"{args[0]}.{args[1]}"
-        instance = storage.all().get(key)
-        if instance is None:
+        if key not in storage.all():
             print("** no instance found **")
-        else:
-            print(instance)
-
-    def do_all(self, arg):
-        """Show all instances of a class, or all instances
-        if no class specified"""
-        args = shlex.split(arg)
-        if args and args[0] not in self.classes:
-            print("** class doesn't exist **")
             return
-
-        objects = storage.all()
-        all_objects = []
-        if args:
-            all_objects = [
-                str(obj)
-                for key, obj in objects.items()
-                if key.startswith(args[0])
-            ]
-        else:
-            # Add all objects if no class specified
-            all_objects = [str(obj) for obj in obj in objects.value()]
-
-        print(all_objects)
+        print(storage.all()[key])
 
     def do_destroy(self, arg):
         """Destroy an instance based on class name and id"""
@@ -111,9 +91,7 @@ class HBNBCommand(cmd.Cmd):
             print("** instance id missing **")
             return
 
-        class_name = args[0]
-        obj_id = args[1]
-        key = f"{class_name}.{obj_id}"
+        key = f"{args[0]}.{args[1]}"
 
         # Check if instance exists
         if key not in storage.all():
@@ -130,39 +108,43 @@ class HBNBCommand(cmd.Cmd):
         if len(args) == 0:
             print("** class doesn't exist **")
             return
-        elif args[0] not in self.classes:
+        if args[0] not in self.classes:
             print("** class doesn't exist **")
             return
-        elif len(args) == 1:
+        if len(args) == 1:
             print("** instance id missing **")
             return
-
-        key = f"{args[0]}.{args[1]}"
-        instance = storage.all().get(key)
         if instance is None:
             print("** no instance found **")
             return
-        elif len(args) == 2:
+        if len(args) == 2:
             print("** attribute name missing **")
             return
-        elif len(args) == 3:
+        if len(args) == 3:
             print("** value missing **")
             return
+        key = f"{args[0]}.{args[1]}"
+        if key not in storage.all():
+            print("** no instance found **")
+            return
+        obj = storage.all()[key]
+        setattr(obj, args[2], args[3])
+        obj.save()
 
-        attr_name = args[2]
-        attr_value = args[3]
-
-        # Type cast value
-        if hasattr(instance, attr_name):
-            attr_type = type(getattr(instance, attr_name))
-            try:
-                attr_value = attr_type(attr_value)
-            except ValueError:
-                print(f"** could not convert value to {attr_type.__name__} **")
-                return
-
-        setattr(instance, attr_name, attr_value)
-        instance.save()
+    def do_all(self, arg):
+        """Show all instances of a class, or all instances
+        if no class specified
+        """
+        args = shlex.split(arg)
+        if args and args[0] not in self.classes:
+            print("** class doesn't exist **")
+            return
+        objects = storage.all()
+        all_objects = [
+            str(obj) for key, obj in objects.items()
+            if not args or key.startswith(args[0])
+        ]
+        print(all_objects)
 
 
 if __name__ == '__main__':
