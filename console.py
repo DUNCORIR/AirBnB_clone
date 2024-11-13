@@ -7,6 +7,11 @@ import shlex  # For splitting command arguments safely
 from models.base_model import BaseModel
 from models import storage
 from models.user import User
+from models.state import State
+from models.city import City
+from models.amenity import Amenity
+from models.place import Place
+from models.review import Review
 
 
 # Define BaseModel
@@ -18,6 +23,11 @@ class HBNBCommand(cmd.Cmd):
     classes = {
         "BaseModel": BaseModel,
         "User": User,
+        "State": State,
+        "City": City,
+        "Amenity": Amenity,
+        "Place": Place,
+        "Review": Review
     }
 
     def do_quit(self, arg):
@@ -94,19 +104,25 @@ class HBNBCommand(cmd.Cmd):
         if len(args) == 0:
             print("** class name missing **")
             return
-        elif args[0] != "BaseModel":
+        if args[0] not in self.classes:
             print("** class doesn't exist **")
             return
-        elif len(args) == 1:
+        if len(args) == 1:
             print("** instance id missing **")
             return
 
-        key = f"{args[0]}.{args[1]}"
+        class_name = args[0]
+        obj_id = args[1]
+        key = f"{class_name}.{obj_id}"
+
+        # Check if instance exists
         if key not in storage.all():
             print("** no instance found **")
-        else:
-            del storage.all()[key]
-            storage.save()
+            return
+
+        # Delete the object from storage.
+        del storage.all()[key]
+        storage.save()
 
     def do_update(self, arg):
         """Update an instance of BaseModel by adding or updating attribute"""

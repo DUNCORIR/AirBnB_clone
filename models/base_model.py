@@ -56,6 +56,14 @@ class BaseModel:
         Returns:
             str: String format of the instance.
         """
+        # Ordered dictionary for a specific attribute order.
+        ordered_attributes = {
+                "first_name": getattr(self, "first_name", None),
+                "id": self.id,
+                "created_at": self.created_at,
+                "updated_at": self.updated_at,
+        }
+        # Format as string on ordered attributes
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
