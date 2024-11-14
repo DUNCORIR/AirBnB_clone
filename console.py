@@ -182,16 +182,34 @@ class HBNBCommand(cmd.Cmd):
         args = line.split(".")
         if len(args) == 2:
             class_name, command = args[0], args[1]
-            if command == "all()":
-                # Calling do_all with the class name
-                if class_name in self.classes:
+            if class_name in self.classes:
+                # Handle <class name>.all() command
+                if command == "all()":
+                    # Calling do_all with the class name
                     self.do_all(class_name)
+                # Handle <class name>.count() command
+                elif command == "count()":
+                    self.do_count(class_name)
+                # Handle <class name>.show(<id>) command
+                elif command.startswith("show(") and command.endswith(")"):
+                    # Extract the ID/strip any surrounding quotes
+                    instance_id = command[5:-1].strip("\"'")
+                    self.do_show(f"{class_name} {instance_id}")
                 else:
-                    print("** class doesn't exist **")
+                    print("*** Unknown syntax: {line}")
             else:
-                print("*** Unknown syntax: {line}")
+                print("** class doesn't exist **")
         else:
             print(f"** Unknown syntax: {line}")
+
+    def do_count(self, class_name):
+        """Counts instances of a specific class."""
+        if class_name not in self.classes:
+            print("** class doesn't exist **")
+            return
+        objects = storage.all()
+        count = sum(1 for key in objects if key.startswith(class_name))
+        print(count)
 
 
 if __name__ == '__main__':
