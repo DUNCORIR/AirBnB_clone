@@ -177,6 +177,22 @@ class HBNBCommand(cmd.Cmd):
         ]
         print(all_objects)
 
+    def default(self, line):
+        """ Handles commands with <class name>.command() format."""
+        args = line.split(".")
+        if len(args) == 2:
+            class_name, command = args[0], args[1]
+            if command == "all()":
+                # Calling do_all with the class name
+                if class_name in self.classes:
+                    self.do_all(class_name)
+                else:
+                    print("** class doesn't exist **")
+            else:
+                print("*** Unknown syntax: {line}")
+        else:
+            print(f"** Unknown syntax: {line}")
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
