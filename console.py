@@ -158,8 +158,8 @@ class HBNBCommand(cmd.Cmd):
                         attr_value = attr_type(attr_value)
                 setattr(obj, attr_name, attr_value)
             except ValueError:
-                 print(f"** could not convert {attr_value} **")
-                 continue
+                print(f"** could not convert {attr_value} **")
+                continue
         obj.save()
 
     def do_all(self, arg):
