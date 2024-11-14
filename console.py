@@ -2,6 +2,7 @@
 """
 Command Line Interface (CLI) for the clone AirBnB.
 """
+import ast  # For safely parsing dictionaries
 import cmd
 import shlex  # For splitting command arguments safely
 from models.base_model import BaseModel
@@ -115,7 +116,7 @@ class HBNBCommand(cmd.Cmd):
         if len(args) == 1:
             print("** instance id missing **")
             return
-
+        # Construct the key for storage
         key = f"{args[0]}.{args[1]}"
 
         # Check if instance exists
@@ -123,31 +124,61 @@ class HBNBCommand(cmd.Cmd):
             print("** no instance found **")
             return
 
-        # Delete the object from storage.
+        # Delete the object/instance from storage.
         del storage.all()[key]
         storage.save()
 
     def do_update(self, arg):
-        """Update an instance by adding or updating attribute"""
+        """Update an instance by adding or updating attributes.Supports
+        both single attribute-value updates and dictionary-based updates.
+        """
         args = shlex.split(arg)
+        # Check if we have at least a class name and an instance ID
         if len(args) < 2:
             print("** class name or instance id missing **")
             return
+        # Check if the class name is valid
         if args[0] not in self.classes:
             print("** class doesn't exist **")
             return
+        # Construct the key for the instance
         key = f"{args[0]}.{args[1]}"
-        if key not in storage.all():
-            print("** no instance found **")
-            return
+        # Check if the instance exists
         if key not in storage.all():
             print("** no instance found **")
             return
         # Retrieve the instance and update attribute
         obj = storage.all()[key]
 
-        # Handle multiple attribute-value pairs.
+        # Check if the argument is a dictionary (3rd argument)
+        if len(args) == 3:
+            try:
+                #  Try parse string 3rd arg as a dictionary safely
+                attributes = ast.literal_eval(args[2])  # safe parse
+                if isinstance(attributes, dict):
+                    # Update the object using dictionary values
+                    for attr_name, attr_value in attributes.items():
+                        if hasattr(obj, attr_name):
+                            attr_type = type(getattr(obj, attr_name))
+                            if attr_type in [int, float]:
+                                attr_value = attr_type(attr_value)
+                        setattr(obj, attr_name, attr_value)
+                    obj.save()
+                    return
+            except (SyntaxError, ValueError):
+                print("** invalid dictionary format **")
+                return
+
+        # Handle single attribute-value pair updates
+        if len(args) < 4:
+            print("** attribute name or value missing **")
+            return
+
+        # Handle multiple attribute-value updates
         for i in range(2, len(args), 2):
+            if i + 1 >= len(args):  # Ensures no out of range
+                print("** value missing **")
+                return
             attr_name, attr_value = args[i], args[i + 1]
 
             # Attempt to cast the value to an integer or float if applicable
@@ -183,8 +214,11 @@ class HBNBCommand(cmd.Cmd):
         if len(args) == 2:
             class_name, command = args[0], args[1]
             if class_name in self.classes:
+                # Handle <class name>.create() command
+                if command == "create()":
+                    self.do_create(class_name)
                 # Handle <class name>.all() command
-                if command == "all()":
+                elif command == "all()":
                     # Calling do_all with the class name
                     self.do_all(class_name)
                 # Handle <class name>.count() command
@@ -195,6 +229,46 @@ class HBNBCommand(cmd.Cmd):
                     # Extract the ID/strip any surrounding quotes
                     instance_id = command[5:-1].strip("\"'")
                     self.do_show(f"{class_name} {instance_id}")
+                # Handle <class name>.destroy(<id>) command
+                elif command.startswith("destroy(") and command.endswith(")"):
+                    instance_id = command[8:-1].strip("\"'")
+                    self.do_destroy(f"{class_name} {instance_id}")
+                # <class name>.update(<id>,<attribute name>,<attribute value>
+                elif command.startswith("update(") and command.endswith(")"):
+                    update_args = command[7:-1].split(", ", 2)
+
+                    # Check if the second argument is a dictionary
+                    if len(update_args) == 2:
+                        instance_id = update_args[0].strip("\"'")
+                        try:
+                            # Attempt to parse the 2nd arg as a dict.
+                            attributes = ast.literal_eval(
+                                    update_args[1].strip()
+                            )
+                            if isinstance(attributes, dict):
+                                # For each key-value pair, call do_update
+                                for attr_name, attr_value in attr.items():
+                                    self.do_update(
+                                            f"{class_name} {instance_id} "
+                                            f"{attribute_name} "
+                                            f"{attribute_value} "
+                                    )
+                                return
+                        except (SyntaxError, ValueError):
+                            print("** invalid dictionary syntax **")
+                            return
+                    # <class name>.update(<id>,<attr name>,<attr value>
+                    elif len(update_args) == 3:
+                        instance_id = update_args[0].strip("\"'")
+                        attribute_name = update_args[1].strip("\"'")
+                        attribute_value = update_args[2].strip("\"'")
+                        self.do_update(
+                                f"{class_name} {instance_id} "
+                                f"{attribute_name} "
+                                f"{attribute_value} "
+                        )
+                    else:
+                        print(f"** invalid syntax **")
                 else:
                     print("*** Unknown syntax: {line}")
             else:
