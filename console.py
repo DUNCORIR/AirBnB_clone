@@ -86,7 +86,7 @@ class HBNBCommand(cmd.Cmd):
         print(new_object.id)
 
     def do_show(self, arg):
-        """ Show an instance of BaseModel based on its id"""
+        """Show an instance of BaseModel based on its id"""
         args = arg.split()
         if len(args) == 0:
             print("** class name missing **")

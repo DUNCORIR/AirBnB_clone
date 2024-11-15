@@ -41,7 +41,9 @@ class TestBaseModel(unittest.TestCase):
         self.assertGreater(instance.updated_at, original_updated_at)
 
     def test_to_dict_method(self):
-        """Test the to_dict method to check if it returns a dictionary with the correct keys and types"""
+        """Test the to_dict method to check if it returns
+        a dictionary with the correct keys and types.
+        """
         instance = BaseModel()
         instance.name = "My First Model"
         instance.my_number = 89
@@ -96,11 +98,15 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(new_instance.updated_at, datetime)
 
     def test_create_from_dict_missing_class_key(self):
-        """Test creating an instance when the dictionary doesn't include the __class__ key"""
+        """Test creating an instance when the dictionary doesn't
+        include the __class__ key
+        """
         instance = BaseModel()
         instance_dict = instance.to_dict()
-        del instance_dict["__class__"]  # Remove __class__ key to simulate missing key
-        
+
+        # Remove __class__ key to simulate missing key
+        del instance_dict["__class__"]
+
         # Create a new instance with missing __class__ key
         with self.assertRaises(KeyError):
             BaseModel(**instance_dict)
