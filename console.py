@@ -242,16 +242,15 @@ class HBNBCommand(cmd.Cmd):
                         instance_id = update_args[0].strip("\"'")
                         try:
                             # Attempt to parse the 2nd arg as a dict.
-                            attributes = ast.literal_eval(
+                            attr = ast.literal_eval(
                                     update_args[1].strip()
                             )
-                            if isinstance(attributes, dict):
+                            if isinstance(attr, dict):
                                 # For each key-value pair, call do_update
                                 for attr_name, attr_value in attr.items():
                                     self.do_update(
                                             f"{class_name} {instance_id} "
-                                            f"{attribute_name} "
-                                            f"{attribute_value} "
+                                            f"{attr_name} {attr_value}"
                                     )
                                 return
                         except (SyntaxError, ValueError):
@@ -260,12 +259,11 @@ class HBNBCommand(cmd.Cmd):
                     # <class name>.update(<id>,<attr name>,<attr value>
                     elif len(update_args) == 3:
                         instance_id = update_args[0].strip("\"'")
-                        attribute_name = update_args[1].strip("\"'")
-                        attribute_value = update_args[2].strip("\"'")
+                        attr_name = update_args[1].strip("\"'")
+                        attr_value = update_args[2].strip("\"'")
                         self.do_update(
                                 f"{class_name} {instance_id} "
-                                f"{attribute_name} "
-                                f"{attribute_value} "
+                                f"{attr_name} {attr_value}"
                         )
                     else:
                         print(f"** invalid syntax **")
