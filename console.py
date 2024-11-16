@@ -151,7 +151,7 @@ class HBNBCommand(cmd.Cmd):
         obj = storage.all()[key]
 
         # Check if the argument is a dictionary (3rd argument)
-        if len(args) == 3:
+        if len(args) == 3:  # Handle dictionary update
             try:
                 #  Try parse string 3rd arg as a dictionary safely
                 attributes = ast.literal_eval(args[2])  # safe parse
@@ -248,19 +248,28 @@ class HBNBCommand(cmd.Cmd):
                             if isinstance(attr, dict):
                                 # For each key-value pair, call do_update
                                 for attr_name, attr_value in attr.items():
+                                    # Properly format the update command
+                                    attr_value = repr(attr_value)
                                     self.do_update(
                                             f"{class_name} {instance_id} "
                                             f"{attr_name} {attr_value}"
                                     )
                                 return
+                            else:
+                                print("** invalid dictionary syntax **")
+                                return
                         except (SyntaxError, ValueError):
                             print("** invalid dictionary syntax **")
                             return
-                    # <class name>.update(<id>,<attr name>,<attr value>
+                    # Handle individual attribute update
                     elif len(update_args) == 3:
                         instance_id = update_args[0].strip("\"'")
                         attr_name = update_args[1].strip("\"'")
                         attr_value = update_args[2].strip("\"'")
+                        try:  # Type-casting the value
+                            attr_value = ast.literal_eval(attr_value)
+                        except (ValueError, SyntaxError):
+                            pass  # Keep as a string if not evaluable
                         self.do_update(
                                 f"{class_name} {instance_id} "
                                 f"{attr_name} {attr_value}"
