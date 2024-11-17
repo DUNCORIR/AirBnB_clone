@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """
-This Module classs BaseModel defines all common attributes/methods
-for other classes.
+BaseModel class for AirBnB Clone Project.
+Defines all common attributes/methods for other classes.
 """
 import uuid
 from datetime import datetime
@@ -22,27 +22,17 @@ class BaseModel:
         Initializes a new BaseModel instance.
 
         Args:
-            *args (any): Not used at moment
+            *args (any): Not used
             **kwargs (dict): Key /value pairs of attributes
         """
 
         if kwargs:
-            if '__class__' not in kwargs:
-                # Confirm __class__ key presence
-                raise KeyError("__class__key is required in dictionary")
-            self.id = kwargs.get('id', str(uuid.uuid4()))
-            if 'created_at' in kwargs:
-                self.created_at = datetime.fromisoformat(kwargs['created_at'])
-            else:
-                self.created_at = datetime.now()
-            if 'updated_at' in kwargs:
-                self.updated_at = datetime.fromisoformat(kwargs['updated_at'])
-            else:
-                self.updated_at = datetime.now()
-            # Set other attributes from kwargs without __class_
+            # Remove '__class__' key if present
+            kwargs.pop('__class__', None)
             for key, value in kwargs.items():
-                if key not in ['created_at', 'updated_at', '__class__']:
-                    setattr(self, key, value)
+                if key in ("created_at", "updated_at"):
+                    value = datetime.fromisoformat(value)
+                setattr(self, key, value)
         else:
             self.id = str(uuid.uuid4())  # Assign unique id to self.id
             self.created_at = datetime.now()  # set to current date and time
@@ -56,14 +46,6 @@ class BaseModel:
         Returns:
             str: String format of the instance.
         """
-        # Ordered dictionary for a specific attribute order.
-        ordered_attributes = {
-                "first_name": getattr(self, "first_name", None),
-                "id": self.id,
-                "created_at": self.created_at,
-                "updated_at": self.updated_at,
-        }
-        # Format as string on ordered attributes
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
@@ -81,12 +63,8 @@ class BaseModel:
         Returns:
             dict: Dictionary representation of an instance.
         """
-        dict_rep = {
-            'my_number': self.__dict__.get('my_number'),
-            'name': self.__dict__.get('name'),
-            '__class__': self.__class__.__name__,
-            'updated_at': self.updated_at.isoformat(),
-            'id': self.id,
-            'created_at': self.created_at.isoformat()
-        }
-        return {k: v for k, v in dict_rep.items() if v is not None}
+        dict_rep = self.__dict__.copy()
+        dict_rep["__class__"] = self.__class__.__name__
+        dict_rep["created_at"] = self.created_at.isoformat()
+        dict_rep["updated_at"] = self.updated_at.isoformat()
+        return dict_rep
