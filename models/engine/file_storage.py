@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 """
-The script serializes instances of to a JSON file and
-deserializes JSON file to instances.
+FileStorage Class that serializes instances of to a
+JSON file and deserializes JSON file to instances.
 """
 import json
 from models.base_model import BaseModel
-import os
+from os import path
 from models.state import State
 from models.city import City
 from models.amenity import Amenity
@@ -15,7 +15,15 @@ from models.user import User
 
 
 class FileStorage:
-    """Handles file_based storage foa all models."""
+    """
+    Serializes instances to a JSON file and
+    deserializes JSON file to instances.
+
+    Attributes:
+             __file_path (str): Path to the JSON file.
+             __objects (dict): Stores all objects in <class name>.id format.
+
+    """
 
     # Private class attributes
     __file_path = "file.json"  # path to JSON file for storing
@@ -34,42 +42,48 @@ class FileStorage:
 
     # Public instance methods
     def all(self):
-        """Returns the disctionary __objects"""
+        """
+        Returns the disctionary __objects.
+
+        Returns:
+            dict: The dictionary containing all stored objects.
+        """
         return self.__objects
 
     def new(self, obj):
-        """Sets obj in __objects with key <obj class name>.id."""
+        """Sets obj in __objects with key <obj class name>.id.
+
+        Args:
+            obj (BaseModel): The object to store.
+        """
         key = f"{obj.__class__.__name__}.{obj.id}"
         self.__objects[key] = obj
 
     def save(self):
-        """Serializes __objects to JSON file."""
-        obj_dict = {k: v.to_dict() for k, v in self.__objects.items()}
-        with open(self.__file_path, "w") as f:
-            json.dump(obj_dict, f)
+        """Serializes __objects to JSON file.
+        (path: __file_path).
+        """
+        with open(self.__file_path, "w", encoding="utf-8") as f:
+            json.dump(
+                {key: obj.to_dict() for key, obj in self.__objects.items()}, f
+            )
 
     def reload(self):
-        """Deserializes the JSON file to __objects, if it exists."""
-        try:
-            with open(self.__file_path, "r") as f:
-                obj_dict = json.load(f)
-                for key, value in obj_dict.items():
-                    class_name = value["__class__"]
+        """
+        Deserializes the JSON file to __objects, if it exists.
 
-                    # Check for all class names
-                    if class_name == "BaseModel":
-                        self.__objects[key] = BaseModel(**value)
-                    elif class_name == "User":  # Check for user class
-                        self.__objects[key] = User(**value)
-                    elif class_name == "State":
-                        self.__objects[key] = State(**value)
-                    elif class_name == "City":
-                        self.__objects[key] = City(**value)
-                    elif class_name == "Amenity":
-                        self.__objects[key] = Amenity(**value)
-                    elif class_name == "Place":
-                        self.__objects[key] = Place(**value)
-                    elif class_name == "Review":
-                        self.__objects[key] = Review(**value)
-        except FileNotFoundError:
-            pass
+        If the file does not exist or is invalid, no exception is raised.
+        """
+        if path.exists(self.__file_path):
+            try:
+                with open(self.__file_path, "r", encoding="utf-8") as f:
+                    obj_dict = json.load(f)
+                    for key, value in obj_dict.items():
+                        class_name = value.get("__class__")
+                        if class_name in self.class_map:
+                            self.__objects[key] = (
+                                    self.class_map[class_name](**value)
+                            )
+            except (json.JSONDecodeError, KeyError):
+                # Gracefully handle invalid JSON or missing "__class__"
+                pass
