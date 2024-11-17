@@ -27,13 +27,14 @@ class BaseModel:
         """
 
         if kwargs:
-            # Remove '__class__' key if present
-            kwargs.pop('__class__', None)
+            # Remove '__class__' key if presen
             for key, value in kwargs.items():
-                if key in ("created_at", "updated_at"):
-                    value = datetime.fromisoformat(value)
-                setattr(self, key, value)
+                if key != "__class__":
+                    if key in ("created_at", "updated_at"):
+                        value = datetime.fromisoformat(value)
+                    setattr(self, key, value)
         else:
+            # Standard initialization for a new instance
             self.id = str(uuid.uuid4())  # Assign unique id to self.id
             self.created_at = datetime.now()  # set to current date and time
             self.updated_at = self.created_at
@@ -63,8 +64,16 @@ class BaseModel:
         Returns:
             dict: Dictionary representation of an instance.
         """
-        dict_rep = self.__dict__.copy()
-        dict_rep["__class__"] = self.__class__.__name__
-        dict_rep["created_at"] = self.created_at.isoformat()
-        dict_rep["updated_at"] = self.updated_at.isoformat()
+        dict_rep = {
+                'id': self.id,
+                'created_at': self.created_at.isoformat(),
+                'updated_at': self.updated_at.isoformat(),
+
+                '__class__': self.__class__.__name__,
+        }
+        # Add any other attributes dynamically
+        for key, value in self.__dict__.items():
+            if key not in ('id', 'created_at', 'updated_at'):
+                dict_rep[key] = value
+
         return dict_rep

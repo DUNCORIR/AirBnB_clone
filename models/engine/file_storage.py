@@ -81,9 +81,10 @@ class FileStorage:
                     for key, value in obj_dict.items():
                         class_name = value.get("__class__")
                         if class_name in self.class_map:
+                            # Instantiate objects using class_map
                             self.__objects[key] = (
                                     self.class_map[class_name](**value)
                             )
-            except (json.JSONDecodeError, KeyError):
+            except (json.JSONDecodeError, KeyError) as e:
                 # Gracefully handle invalid JSON or missing "__class__"
-                pass
+                print(f"Error during reload: {str(e)}")
