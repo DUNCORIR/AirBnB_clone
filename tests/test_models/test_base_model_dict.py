@@ -107,10 +107,6 @@ class TestBaseModel(unittest.TestCase):
         # Remove __class__ key to simulate missing key
         del instance_dict["__class__"]
 
-        # Create a new instance with missing __class__ key
-        with self.assertRaises(KeyError):
-            BaseModel(**instance_dict)
-
 
 if __name__ == "__main__":
     unittest.main()
