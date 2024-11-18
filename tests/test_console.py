@@ -4,6 +4,8 @@ import unittest
 from unittest.mock import patch
 from io import StringIO
 from console import HBNBCommand
+from models.base_model import BaseModel
+from models import storage
 
 
 class TestConsole(unittest.TestCase):
@@ -15,7 +17,7 @@ class TestConsole(unittest.TestCase):
             output = f.getvalue()
             self.assertIn(
                     "Show an instance of BaseModel based on its id", output
-                    )
+            )
 
     def test_create_base_model(self):
         """Test that creating a BaseModel instance works."""
@@ -61,11 +63,27 @@ class TestConsole(unittest.TestCase):
 
     def test_all_base_model(self):
         """Test that the all command lists all BaseModel instances."""
+        # Create a BaseModel instance to ensure one exists
+        new_instance = BaseModel()
+        storage.new(new_instance)
+        storage.save()
+
         with patch('sys.stdout', new=StringIO()) as f:
             HBNBCommand().onecmd("all BaseModel")
             output = f.getvalue().strip()
-            # Checks if any BaseModel is in output.
+            # Checks if the created instance is listed
             self.assertIn("[BaseModel]", output)
+
+    def test_all_empty(self):
+        """
+        Test that the all command returns an empty
+        list when no instances exist.
+        """
+        storage._FileStorage__objects.clear()
+        with patch('sys.stdout', new=StringIO()) as f:
+            HBNBCommand().onecmd("all BaseModel")
+            output = f.getvalue().strip()
+            self.assertEqual(output, "[]")
 
 
 if __name__ == "__main__":

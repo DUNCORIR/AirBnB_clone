@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Test file for BaseModel class
+Unittest for BaseModel class
 """
 
 from models.base_model import BaseModel
