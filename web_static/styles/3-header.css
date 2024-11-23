@@ -1,0 +1,20 @@
+/* styles/3-header.css */
+header {
+	background-color: #FFFFFF;
+	color: white;
+	height: 70px;
+	width: 100%;
+	border-bottom: 1px solid #CCCCCC;
+	display: flex;
+	align-items: center; /* Centers vertically */
+	padding-left: 20px;
+}
+
+header .logo {
+	background-image: url('../images/logo.png');
+	background-size: contain; /* Adjusts the image size to fit */
+	background-repeat: no-repeat;
+	width: 180px; /* Adjust width for logo size */
+	height: 60px; /* Adjust height for logo size */
+	display: block; /* Ensures the div respects the height and width */
+}
