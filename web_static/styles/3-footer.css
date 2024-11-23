@@ -6,7 +6,8 @@ footer {
 	width: 100%;
 	border-top: 1px solid #CCCCCC;
 	display: flex;
-	align-items: center;
 	justify-content: center; /* Centers horizontally */
+	align-items: center; /* Centers vertically */
+	flex-shrink: 0; /* Prevent footer from shrinking */
 	margin-top: auto; /* Pushes the footer to the bottom */
 }
