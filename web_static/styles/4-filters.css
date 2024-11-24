@@ -1,43 +1,44 @@
+/* Filters Section */
 .filters {
 	background-color: #FFFFFF;
-	color: #484848;
 	height: 70px;
 	width: 100%; /* Full width of the container */
 	border: 1px solid #DDDDDD;
 	border-radius: 4px;
 	display: flex; /* Use flexbox for layout */
 	align-items: center; /* Centers items vertically */
-	justify-content: space-between; /* Spaces elements evenly */
-	padding-right: 0 20px; /* Add padding on left and right */
+	justify-content: space-between;
+	padding: 0 30px;
+	box-sizing: border-box;
 }
 
-/* Styling the input search box */
-.filters input {
-	flex: 1; /* Allow the input to take up available space */
+/* Search Box Input */
+.search-box {
+	flex-grow: 1; /* Expand to fill remaining space */
 	height: 48px;
-	border: 1px solid #CCCCCC;
-	border-radius: 4px;
-	padding: 0 10px; /* Add padding inside the input */
+	border: none;
+	border-radius: 4px; /* Rounded corners on the right */
+	padding: 0 15px;
+	outline: none; /* Remove default focus outline */
 	font-size: 16px;
-	margin-right: 10px; /* Add spacing between input and button */
+	margin-left: 10px; /* Space between button and input */
 }
 
 /* Styling the search button */
-.filters .search-btn {
-	background-color: #FF5A5F;
-	color: white;
+.search-btn {
+	background-color: #FF5A5F; /* Button color */
+	color: #FFFFFF;
 	font-size: 18px;
-	height: 48px;
-	width: 150px; /* Fixed width for the button */
-	border: none; /* Remove default border */
-	border-radius: 4px;
-	opacity: 1;
-	cursor: pointer; /* Add pointer cursor for better UX */
-	transition: opacity 0.3s ease, transform 0.2s ease; /* Add hover animation */
+	height: 48px; 
+	width: 20%;
+	border: none;
+	border-radius: 4px; /* Right rounded corners */
+	cursor: pointer;
+	transition: opacity 0.3s ease; /* Smooth hover effect */
 }
 
 /* Change button opacity on hover */
 .search-btn:hover {
-	opacity: 0.9; /* Change opacity when hovering */
+	opacity: 0.9;   /* Change opacity when hovering */
 
 }

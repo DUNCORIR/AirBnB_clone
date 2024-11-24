@@ -1,15 +1,14 @@
 /* styles/4-common.css */
 body {
-	display: flex;
-	flex-direction: column; /* Arrange header, container, and footer vertically */
 	font-family: Arial, sans-serif;
 	margin: 0;
-	min-height: 100vh; /* Full viewport height */
+	padding: 0;
 }
 
 /* Container for main content */
 .container {
 	max-width: 1000px;
 	margin: 30px auto; /* Centered and with 30px top and bottom margin */
-	flex: 1; /* Take up remaining space between header and footer */
+	padding: 0 15px
 }
+
