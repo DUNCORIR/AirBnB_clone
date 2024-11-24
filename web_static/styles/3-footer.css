@@ -11,4 +11,5 @@ footer {
 	position: absolute; /* Position it at the bottom */
 	bottom: 0; /* Align to the bottom of the page */
 	left: 0; /* Align to the left edge */
+	line-height: 1; /* Ensure no extra vertical space is added by text */
 }
