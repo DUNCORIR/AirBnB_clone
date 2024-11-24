@@ -1,14 +1,14 @@
 /* styles/3-footer.css */
 footer {
-	background-color: white; 
-	color: #484848;
-	height: 60px;
-	width: 100%;
-	border-top: 1px solid #CCCCCC;
-	display: flex;
-	justify-content: center;
-	align-items: center; 
-	position: absolute;
-	bottom: 0;
-	left: 0;
+	background-color: white; /* Set background color to white */ 
+	color: #484848; /* Set text color to a soft gray */
+	height: 60px; /* Set the height to 60px */
+	width: 100%; /* Full width of the page */
+	border-top: 1px solid #CCCCCC;  /* Border on top with the specified color */
+	display: flex; /* Use flexbox for alignment */
+	justify-content: center; /* Center text horizontally */
+	align-items: center;  /* Center text vertically */
+	position: absolute; /* Position it at the bottom */
+	bottom: 0; /* Align to the bottom of the page */
+	left: 0; /* Align to the left edge */
 }
