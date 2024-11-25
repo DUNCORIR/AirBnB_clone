@@ -1,13 +1,16 @@
 /* styles/3-footer.css */
 footer {
+	display: flex; /* Use flexbox for alignment */
 	background-color: white; /* Set background color to white */ 
 	color: #484848; /* Set text color to a soft gray */
 	height: 60px; /* Set the height to 60px */
 	width: 100%; /* Full width of the page */
-	border-top: 1px solid #CCCCCC;  /* Border on top with the specified color */
-	display: flex; /* Use flexbox for alignment */
+	border-top: 1px solid #CCCCCC;  /* Border on-top with specified color */
 	justify-content: center; /* Center text horizontally */
-	align-items: center;  /* Center text vertically */
 	margin-top: 30px; /* Add spacing between the footer and content */
+	align-items: center;  /* Center text vertically */
+	position: absolute; /* Position it at the bottom */
+	bottom: 0; /* Align to the bottom of the page */
+	left: 0; /* Align to the left edge */
 	line-height: 1; /* Ensure no extra vertical space is added by text */
 }

@@ -29,7 +29,7 @@
 
 /* Place Name (h2) */
 .places-container article h2 {
-	font-size: 30px; * Larger font size for place name */
+	font-size: 30px; /* Larger font size for place name */
 	margin: 0; /* Remove default margins */
 }
 /* Adjust the layout for "A suite" */

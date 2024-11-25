@@ -10,7 +10,7 @@
 	justify-content: space-between;
 	padding: 0 30px;
 	box-sizing: border-box;
-	margin: 0 auto;
+	margin: 0;
 }
 
 /* Locations and Amenities filters */
@@ -26,7 +26,7 @@
 	border-right: 1px solid #DDDDDD; /* Add border for the locations box */
 }
 .amenities {
-	margin-left: 0; /* Or use a small negative margin like -10px if necessary */
+	margin-left: 5px; 
 	border-right: none; /* Remove border for the last box */
 }
 
