@@ -16,7 +16,7 @@
 	flex-wrap: wrap; /* Allow wrapping to next line */
 	justify-content: center; /* Center the items horizontally */
 	gap: 20px; /* Space between items */
-	margin-bottom: 100px; /* Add space at the bottom to prevent overlap with the footer */
+	margin-bottom: 120px; /* Add space at the bottom to prevent overlap with the footer */
 }
 
 /* Individual Place Article */
@@ -135,7 +135,3 @@ body {
 	display: flex;
 	flex-direction: column;
 }
-
-footer {
-	    z-index: 1; /* Ensure footer stays below content */
-    }
