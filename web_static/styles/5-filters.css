@@ -26,6 +26,7 @@
 }
 
 .amenities {
+	margin-left: 0; /* Or use a small negative margin like -10px if necessary */
 	border-right: none; /* Remove border for the last box */
 }
 
@@ -56,6 +57,7 @@
 }
 
 .locations {
+	padding-right: 5px; /* Adjust this value as needed */
 	border-right: 1px solid #DDDDDD; /* Border for the first filter */
 }
 

@@ -1,0 +1,123 @@
+/* styles/6-filters.css */
+.filters {
+	background-color: #FFFFFF;
+	height: 70px;
+	width: 100%;
+	border: 1px solid #DDDDDD;
+	border-radius: 4px;
+	display: flex; /* Use flexbox for layout */
+	align-items: center; /* Centers items vertically */
+	justify-content: space-between;
+	padding: 0 30px;
+	box-sizing: border-box;
+	margin: 0 auto;
+}
+
+/* Locations and Amenities filters */
+.locations, .amenities {
+	height: 100%;
+	width: 25%;
+	padding: 10px;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	position: relative; /* Needed for absolute positioning of dropdown */
+	border-right: 1px solid #DDDDDD; /* Add border for the locations box */
+}
+.amenities {
+	margin-left: 0; /* Or use a small negative margin like -10px if necessary */
+	border-right: none; /* Remove border for the last box */
+}
+
+
+/* Popup dropdown (ul with class popover) */
+.popover {
+	display: none; /* Hidden by default */
+	position: absolute;
+	top: 100%; /* Position just below the filter div */
+	left: 0;
+	width: 100%; /* Full width of the parent div */
+	background-color: #FAFAFA;
+	border: 1px solid #DDDDDD;
+	border-radius: 4px;
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	z-index: 10; /* Ensure it's on top */
+}
+
+.locations {
+	padding-right: 5px; /* Adjust this value as needed */
+	border-right: 1px solid #DDDDDD; /* Border for the first filter */
+}
+
+/* Show popover when hovering over the filter div */
+.locations:hover .popover, .amenities:hover .popover {
+	display: block:
+}
+
+/* Titles and subtitles inside the filters */
+h3 {
+	font-weight: 600; /* Bold for titles */
+	margin: 0;
+}
+
+h4 {
+	font-weight: 400; /* Regular font weight */
+	font-size: 14px; /* Smaller font size for the subtitle */
+	margin: 0; /* Remove unnecessary margins */
+	margin-top: auto; /* Push subtitle to the bottom */
+}
+
+/* Show popover on hover */
+.locations:hover .popover, .amenities:hover .popover {
+	display: block;
+}
+
+/* Style for each list item inside the popover */
+.popover li {
+	padding: 10px;
+	cursor: pointer;
+}
+
+/* Hover effect for dropdown items */
+.popover li:hover {
+	background-color: #E0E0E0;
+}
+
+/* Title styles inside the popover */
+.popover h2 {
+	font-size: 16px;
+	font-weight: 600;
+	margin: 5px 0;
+}
+
+/* Submenu (cities list) under each state */
+.popover ul {
+	padding-left: 20px;
+}
+
+.popover ul li {
+	font-size: 14px;
+	font-weight: 400;
+}
+
+/* Styling the search button */
+.search-btn {
+	background-color: #FF5A5F;
+	color: #FFFFFF;
+	font-size: 18px;
+	height: 48px;
+	width: 20%;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	flex-shrink: 0; /* Prevent shrinking */
+	transition: opacity 0.3s ease;
+}
+
+.search-btn:hover {
+	opacity: 0.9;
+}
