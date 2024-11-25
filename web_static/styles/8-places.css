@@ -1,0 +1,141 @@
+/* Places section */
+.places {
+	margin-top: 30px;
+}
+
+/* Title for Places section */
+.places h1 {
+	font-size: 30px; /* Large font size for the title */
+	margin: 20px 0; /* Spacing below the title */
+	text-align: left; /* Align title to the left */
+}
+
+/* Container for Places */
+.places-container {
+	display: flex;
+	flex-wrap: wrap; /* Allow wrapping to next line */
+	justify-content: center; /* Center the items horizontally */
+	gap: 20px; /* Space between items */
+	margin-bottom: 100px; /* Add space at the bottom to prevent overlap with the footer */
+}
+
+/* Individual Place Article */
+.places-container article {
+	width: 390px; /* Set width of each place card */
+	padding: 20px; /* Inner padding for content */
+	border: 1px solid #FF5A5F; /* Border with primary color */
+	border-radius: 4px; /* Rounded corners */
+	text-align: center; /* Center text inside */
+	position: relative; /* For positioning elements like price */
+	box-sizing: border-box; /* Ensure padding and border are included in the total width */
+	display: flex; /* Flex to handle content layout */
+	flex-direction: column; /* Arrange the content in a column */
+	justify-content: space-between; /* Distribute the content evenly */
+}
+
+/* Place Name (h2) */
+.places-container article h2 {
+	font-size: 30px; /* Larger font size for place name */
+	margin: 0; /* Remove default margins */
+}
+
+/* Price by night - top-right corner */
+.price_by_night {
+	position: absolute; /* Position it at the top right */
+	top: 20px;
+	right: 20px;
+	background-color: #FF5A5F;
+	color: white;
+	font-size: 30px;
+	height: 60px;
+	width: 60px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-radius: 50%; /* Circular shape */
+}
+
+/* Information section layout */
+.information {
+	height: 80px;
+	border-top: 1px solid #DDDDDD;
+	border-bottom: 1px solid #DDDDDD;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+
+/* Individual information items layout */
+.max_guest,
+.number_rooms,
+.number_bathrooms {
+	width: 100px;
+	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center; /* Center items vertically within the container */
+}
+
+/* Icons for information items */
+.max_guest .icon {
+	background-image: url('../images/icon_group.png');
+	width: 24px;
+	height: 24px;
+	background-size: cover;
+	margin-bottom: 5px;
+}
+
+.number_rooms .icon {
+	background-image: url('../images/icon_bed.png');
+	width: 24px;
+	height: 24px;
+	background-size: cover;
+	margin-bottom: 5px;
+}
+
+.number_bathrooms .icon {
+	background-image: url('../images/icon_bath.png');
+	width: 24px;
+	height: 24px;
+	background-size: cover;
+	margin-bottom: 5px;
+}
+
+/* User section - Owner information */
+.user {
+	margin: 10px 0; /* Add spacing above the user section */
+	font-size: 14px; * Adjust font size */
+	text-align: left; /* Align text to the left */
+	color: #484848; /* Ensure consistent text color */
+}
+.user strong {
+	font-weight: bold;
+	color: #484848;
+}
+
+/* Description section */
+.description {
+	margin-top: 10px;
+	font-size: 14px;
+	color: #484848;
+	line-height: 1.5;
+	text-align: left; /* Align text to the left */
+}
+
+/* Adjust the layout for "A suite" */
+.places-container article:nth-child(3) {
+	margin-top: 20px; /* Add a gap above the third item */
+	align-self: center; /* Center it relative to the row above */
+}
+
+/* Ensuring footer space by adding margin at the bottom of the page */
+body {
+	min-height: 100vh; /* Make sure the body covers the whole viewport */
+	display: flex;
+	flex-direction: column;
+}
+
+footer {
+	    z-index: 1; /* Ensure footer stays below content */
+    }

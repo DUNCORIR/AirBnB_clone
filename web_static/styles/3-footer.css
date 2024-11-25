@@ -8,8 +8,6 @@ footer {
 	display: flex; /* Use flexbox for alignment */
 	justify-content: center; /* Center text horizontally */
 	align-items: center;  /* Center text vertically */
-	position: absolute; /* Position it at the bottom */
-	bottom: 0; /* Align to the bottom of the page */
-	left: 0; /* Align to the left edge */
+	margin-top: 30px; /* Add spacing between the footer and content */
 	line-height: 1; /* Ensure no extra vertical space is added by text */
 }
