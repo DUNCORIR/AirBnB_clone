@@ -31,8 +31,4 @@
 /* Change button opacity on hover */
 .search-btn:hover {
 	opacity: 0.9;   /* Change opacity when hovering */
-
-}
-header, .container, footer {
-    border: 1px solid red; /* Temporary for debugging purposes */
 }
