@@ -3,12 +3,12 @@
 	background-color: #FFFFFF;
 	height: 70px;
 	width: 100%;  /* Full width of the container */
-	border: 1px solid #DDDDDD;
 	border-radius: 4px;
 	display: flex; /* Use flexbox for layout */
 	align-items: center; /* Centers items vertically */
 	justify-content: space-between;  /* Space between filter sections */
 	padding: 0 30px;
+	border: 1px solid #DDDDDD;
 	box-sizing: border-box;
 	margin: 0 auto;  /* Center the filter box horizontally */
 }
@@ -18,16 +18,15 @@
 	height: 100%;
 	width: 25%; /* Each takes 25% of the filter section's width */
 	padding: 10px;
+	position: relative;
 	box-sizing: border-box;
+	justify-content: space-between;
 	display: flex; /* Use flexbox inside for vertical layout */
 	flex-direction: column; /* Stack items vertically */
-	justify-content: space-between; /* Push content to top and bottom */
-	border-right: 1px solid #DDDDDD; /* Add border for the locations box */
 }
 
-.amenities {
-	margin-left: 0; /* Or use a small negative margin like -10px if necessary */
-	border-right: none; /* Remove border for the last box */
+.locations {
+	border-right: 1px solid #DDDDDD;
 }
 
 /* Styling the search button */
@@ -54,11 +53,6 @@
 	width: 25%;
 	padding: 10px;
 	box-sizing: border-box;
-}
-
-.locations {
-	padding-right: 5px; /* Adjust this value as needed */
-	border-right: 1px solid #DDDDDD; /* Border for the first filter */
 }
 
 /* Titles and subtitles inside the filters */

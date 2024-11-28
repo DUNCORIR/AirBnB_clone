@@ -6,34 +6,42 @@
 /* Title for Places section */
 .places h1 {
 	font-size: 30px; /* Large font size for the title */
-	margin: 20px 0; /* Spacing below the title */
+	margin: 0 0 20px 0; /* Spacing below the title */
 	text-align: left; /* Align title to the left */
 }
 
 /* Container for Places */
 .places-container {
 	display: flex;
+	font-size: 30px;
 	flex-wrap: wrap; /* Allow wrapping to next line */
 	justify-content: center; /* Center the items horizontally */
-	gap: 20px; /* Space between items */
 }
 
 /* Individual Place Article */
 .places-container article {
+	display: flex;
+	margin: 20px;
 	width: 390px; /* Set width of each place card */
 	padding: 20px; /* Inner padding for content */
 	border: 1px solid #FF5A5F; /* Border with primary color */
 	border-radius: 4px; /* Rounded corners */
 	text-align: center; /* Center text inside */
+	position: relative; /* For positioning elements like price */
+    flex-direction: column; /* Arrange content vertically */
+    box-sizing: border-box; /* Include padding and border in dimensions */
+    justify-content: space-between; /* Distribute content vertically */
 }
 
 /* Place Name (h2) */
 .places-container article h2 {
 	font-size: 30px; /* Larger font size for place name */
 	margin: 0; /* Remove default margins */
+	text-align: center;
 }
 /* Adjust the layout for "A suite" */
 .places-container article:nth-child(3) {
-	margin-top: 20px; /* Add a gap above the third item */
+	margin-bottom: 40px; /* Space below the name */
+	margin-top: 0; /* Add a gap above the third item */
 	align-self: center; /* Center it relative to the row above */
 }

@@ -3,14 +3,14 @@
 	background-color: #FFFFFF;
 	height: 70px;
 	width: 100%;
-	border: 1px solid #DDDDDD;
 	border-radius: 4px;
 	display: flex; /* Use flexbox for layout */
 	align-items: center; /* Centers items vertically */
 	justify-content: space-between;
 	padding: 0 30px;
+	border: 1px solid #DDDDDD;
 	box-sizing: border-box;
-	margin: 0;
+	margin: 0 auto;
 }
 
 /* Locations and Amenities filters */
@@ -20,17 +20,14 @@
 	padding: 10px;
 	box-sizing: border-box;
 	display: flex;
+	cursor: pointer;
+	position: relative;
 	flex-direction: column;
 	justify-content: space-between;
-	position: relative; /* Needed for absolute positioning of dropdown */
+}
+.location {
 	border-right: 1px solid #DDDDDD; /* Add border for the locations box */
 }
-.amenities {
-	margin-left: 5px; 
-	border-right: none; /* Remove border for the last box */
-}
-
-
 /* Popup dropdown (ul with class popover) */
 .popover {
 	display: none; /* Hidden by default */
@@ -49,13 +46,12 @@
 }
 
 .locations {
-	padding-right: 5px; /* Adjust this value as needed */
 	border-right: 1px solid #DDDDDD; /* Border for the first filter */
 }
 
 /* Show popover when hovering over the filter div */
 .locations:hover .popover, .amenities:hover .popover {
-	display: block:
+	display: block;
 }
 
 /* Titles and subtitles inside the filters */

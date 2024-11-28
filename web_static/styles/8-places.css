@@ -16,7 +16,6 @@
 	flex-wrap: wrap; /* Allow wrapping to next line */
 	justify-content: center; /* Center the items horizontally */
 	gap: 20px; /* Space between items */
-	align-items: flex-start; /* Align items at the top */
 	margin-bottom: 120px; /* Add extra margin at the bottom to prevent overlap with the footer */
 }
 
@@ -136,9 +135,6 @@
 
 }
 
-/* Ensuring footer space by adding margin at the bottom of the page */
-body {
-	min-height: 100vh; /* Make sure the body covers the whole viewport */
-	display: flex;
-	flex-direction: column;
+.footer {
+	position: absolute;
 }

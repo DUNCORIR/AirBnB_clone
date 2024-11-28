@@ -1,5 +1,6 @@
 /* styles/3-footer.css */
 footer {
+	position: relative;
 	display: flex; /* Use flexbox for alignment */
 	background-color: white; /* Set background color to white */ 
 	color: #484848; /* Set text color to a soft gray */
@@ -9,8 +10,6 @@ footer {
 	justify-content: center; /* Center text horizontally */
 	margin-top: 30px; /* Add spacing between the footer and content */
 	align-items: center;  /* Center text vertically */
-	position: absolute; /* Position it at the bottom */
-	bottom: 0; /* Align to the bottom of the page */
-	left: 0; /* Align to the left edge */
+	margin-top: auto; /* Push the footer to the bottom naturally */
 	line-height: 1; /* Ensure no extra vertical space is added by text */
 }
