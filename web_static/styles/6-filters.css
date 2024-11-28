@@ -2,32 +2,33 @@
 .filters {
 	background-color: #FFFFFF;
 	height: 70px;
-	width: 100%;
+	width: 100%;  /* Full width of the container */
 	border-radius: 4px;
+	padding: 0 20px;
 	display: flex; /* Use flexbox for layout */
 	align-items: center; /* Centers items vertically */
-	justify-content: space-between;
-	padding: 0 30px;
-	border: 1px solid #DDDDDD;
+	justify-content: space-between;  /* Space between filter sections */
 	box-sizing: border-box;
-	margin: 0 auto;
+	margin: 0 auto;  /* Center the filter box horizontally */
+	border: 1px solid #DDDDDD;
 }
 
 /* Locations and Amenities filters */
 .locations, .amenities {
 	height: 100%;
-	width: 25%;
-	padding: 10px;
+	width: 25%; /* Each takes 25% of the filter section's width */
+	padding: 0 10px;
 	box-sizing: border-box;
-	display: flex;
-	cursor: pointer;
-	position: relative;
-	flex-direction: column;
-	justify-content: space-between;
+	justify-content: center;
+	display: flex; /* Use flexbox inside for vertical layout */
+	flex-direction: column; /* Stack items vertically */
 }
+
 .location {
+	margin-bottom: 30px;
 	border-right: 1px solid #DDDDDD; /* Add border for the locations box */
 }
+
 /* Popup dropdown (ul with class popover) */
 .popover {
 	display: none; /* Hidden by default */
@@ -55,18 +56,18 @@
 }
 
 /* Titles and subtitles inside the filters */
-h3 {
+.locations h3, .amenities h3{
 	font-weight: 600; /* Bold for titles */
 	margin: 0;
+	font-size: 16px;
 }
 
-h4 {
+.locations h4, .amenities h4 {
 	font-weight: 400; /* Regular font weight */
 	font-size: 14px; /* Smaller font size for the subtitle */
 	margin: 0; /* Remove unnecessary margins */
-	margin-top: auto; /* Push subtitle to the bottom */
+	margin-top: 0; /* Push subtitle to the bottom */
 }
-
 /* Show popover on hover */
 .locations:hover .popover, .amenities:hover .popover {
 	display: block;
@@ -107,7 +108,9 @@ h4 {
 	font-size: 18px;
 	height: 48px;
 	width: 20%;
-	border: none;
+	padding: 0 30px;
+	border: 0;
+	margin-right: 30px;
 	border-radius: 4px;
 	cursor: pointer;
 	flex-shrink: 0; /* Prevent shrinking */

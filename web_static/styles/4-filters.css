@@ -2,30 +2,30 @@
 .filters {
 	background-color: #FFFFFF;
 	height: 70px;
-	width: 100%; /* Full width of the container */
-	border: 1px solid #DDDDDD;
+	width: 100%;  /* Full width of the container */
 	border-radius: 4px;
 	display: flex; /* Use flexbox for layout */
 	align-items: center; /* Centers items vertically */
-	justify-content: flex-end; /* Align button to the right */
-	padding: 0 30px;
+	justify-content: flex-end;  /* Space between filter sections */
 	box-sizing: border-box;
 	margin: 0 auto;  /* Center the filter box horizontally */
+	border: 1px solid #DDDDDD;
 }
 
 /* Styling the search button */
 .search-btn {
-	background-color: #FF5A5F; /* Button color */
+	background-color: #FF5A5F;
 	color: #FFFFFF;
 	font-size: 18px;
-	height: 48px; 
+	height: 48px;
 	width: 20%;
-	border: none;
-	border: 1px solid #DDDDDD;
-	flex-shrink: 0;
-	border-radius: 4px; /* Right rounded corners */
+	padding: 0 30px;
+	border: 0;
+	margin-right: 30px;
+	border-radius: 4px;
 	cursor: pointer;
-	transition: opacity 0.3s ease; /* Smooth hover effect */
+	flex-shrink: 0; /* Prevent shrinking */
+	transition: opacity 0.3s ease;
 }
 
 /* Change button opacity on hover */

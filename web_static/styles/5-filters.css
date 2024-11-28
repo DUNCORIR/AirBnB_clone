@@ -4,23 +4,22 @@
 	height: 70px;
 	width: 100%;  /* Full width of the container */
 	border-radius: 4px;
+	padding: 0 20px;
 	display: flex; /* Use flexbox for layout */
 	align-items: center; /* Centers items vertically */
 	justify-content: space-between;  /* Space between filter sections */
-	padding: 0 30px;
-	border: 1px solid #DDDDDD;
 	box-sizing: border-box;
 	margin: 0 auto;  /* Center the filter box horizontally */
+	border: 1px solid #DDDDDD;
 }
 
 /* Locations and Amenities filters */
 .locations, .amenities {
 	height: 100%;
 	width: 25%; /* Each takes 25% of the filter section's width */
-	padding: 10px;
-	position: relative;
+	padding: 0 10px;
 	box-sizing: border-box;
-	justify-content: space-between;
+	justify-content: center;
 	display: flex; /* Use flexbox inside for vertical layout */
 	flex-direction: column; /* Stack items vertically */
 }
@@ -36,7 +35,9 @@
 	font-size: 18px;
 	height: 48px;
 	width: 20%;
-	border: none;
+	padding: 0 30px;
+	border: 0;
+	margin-right: 30px;
 	border-radius: 4px;
 	cursor: pointer;
 	flex-shrink: 0; /* Prevent shrinking */
@@ -48,22 +49,16 @@
 	opacity: 0.9;
 }
 
-.locations, .amenities {
-	height: 100%;
-	width: 25%;
-	padding: 10px;
-	box-sizing: border-box;
-}
-
 /* Titles and subtitles inside the filters */
-h3 {
+.locations h3, .amenities h3{
 	font-weight: 600; /* Bold for titles */
 	margin: 0;
+	font-size: 16px;
 }
 
-h4 {
+.locations h4, .amenities h4 {
 	font-weight: 400; /* Regular font weight */
 	font-size: 14px; /* Smaller font size for the subtitle */
 	margin: 0; /* Remove unnecessary margins */
-	margin-top: auto; /* Push subtitle to the bottom */
+	margin-top: 0; /* Push subtitle to the bottom */
 }
