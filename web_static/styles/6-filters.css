@@ -25,6 +25,11 @@
 	flex-direction: column; /* Stack items vertically */
 }
 
+/*  adjustment for the amenities filter */
+.amenities {
+    margin-right: 10px; /* Push it 10px closer to the boundary */
+}
+
 .location {
 	margin-bottom: 30px;
 	border-right: 1px solid #DDDDDD; /* Add border for the locations box */
@@ -103,7 +108,7 @@ h4 {
 	background-color: #FF5A5F;
 	color: #FFFFFF;
 	font-size: 18px;
-	height: 48px;
+	height: 48px;S
 	width: 20%;
 	padding: 0 30px;
 	border: 0;
