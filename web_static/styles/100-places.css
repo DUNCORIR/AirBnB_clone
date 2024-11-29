@@ -35,8 +35,7 @@
 /* Place Name (h2) */
 .places-container article h2 {
 	font-size: 30px; /* Larger font size for place name */
-	margin-top: 0; /* Give some space above the name */
-	margin-bottom: 40px; /* Space below the name */
+	margin-top: 0 0 40px; /* some space above the name */
 	text-align: center;
 }
 
@@ -80,28 +79,28 @@
 	justify-content: center;
 }
 
+/* Information Icons */
+.max_guest .icon,
+.number_rooms .icon,
+.number_bathrooms .icon {
+    width: 24px;
+    height: 24px;
+    background-size: cover;
+}
+
 /* Icons for information items */
 .max_guest .icon {
 	background-image: url('../images/icon_group.png');
-	width: 24px;
-	height: 24px;
-	background-size: cover;
 	margin-bottom: 0;
 }
 
 .number_rooms .icon {
 	background-image: url('../images/icon_bed.png');
-	width: 24px;
-	height: 24px;
-	background-size: cover;
 	margin-bottom: 0;
 }
 
 .number_bathrooms .icon {
 	background-image: url('../images/icon_bath.png');
-	width: 24px;
-	height: 24px;
-	background-size: cover;
 	margin-bottom: 0;
 }
 
@@ -133,17 +132,18 @@
 	margin-bottom: 40px; /* Space below the name */
 
 }
+
 .amenities {
     margin-top: 5px;
 }
 /* Title for Amenities Section */
 .amenities h2 {
-    margin-top: 0;
+    margin: 0 0 10px;
     text-align: left;
+    padding-bottom: 5px;
     border-bottom: 1px solid #DDDDDD;
-    margin-bottom: 0;
 }
-/* Adjust the list to reduce spacing */
+/* Amenities List */
 .amenities ul {
     list-style: none;
     padding: 0;
@@ -154,22 +154,19 @@
 }
 /* Individual Amenity List Item */
 .amenities li {
-    display: flex;
 	align-items: center;
 	font-size: 14px;
+    display: flex;
     gap: 10px;
-    margin-bottom: 0; /* Remove bottom margin between list items */
 }
 
 /* Icons for Amenities */
 .amenities .icon {
 	width: 24px;
 	height: 24px;
-    display: flex;
-	background-size: cover;
-	margin-right: 10px;
-    margin-top: none;
-    
+    background-size: contain; /* Ensure the entire icon is visible */
+	background-position: center;
+    flex-shrink: 0; /* Prevent icon from shrinking */
 }
 
 .icon.pet {
@@ -190,43 +187,47 @@
 
 /* Reviews Section */
 .reviews {
-	margin-top: none;
+	margin-top: 30px;
     padding-top: 10px;
     text-align: left; /* Align reviews to the left */
 }
-
+/* Title for Reviews */
 .reviews h2 {
 	font-size: 14px;
     display: flex;
+    text-align: left; /* Ensure title is aligned left */
 	border-bottom: 1px solid #DDDDDD;
     padding-bottom: 5px; /* Padding below the title */
-    margin-bottom: 5px; /* Space below the title */
+    margin: 0 0 10px; /* Space below the title */
 }
-
+/* Reviews List */
 .reviews ul {
 	list-style: none;
 	padding: 0;
     display: flex;
-    margin-bottom: none;
+    flex-wrap: wrap;
+    margin: 0;
 }
-
+/* Individual Review Item */
 .reviews li {
-	margin-bottom: 5px;
+	margin-bottom: 15px;
+    display: flex;          /* Use flex for alignment */
+    flex-direction: column; /* Stack content vertically */
+    align-items: flex-start; /* Align content to the left */
 }
-
+/* Review Headers */
 .reviews h3 {
 	font-size: 14px;
-    display: flex;
-	margin-bottom: none;
+	margin: 0 0 5px;
 	color: #484848;
-    padding-top: 0;
+    text-align: left;
 }
-
+/* Review Content */
 .reviews p {
 	font-size: 14px;
-    display: flex;
-    align-items: left;
+    margin: 0;
 	color: #484848;
+    text-align: left;
 }
 
 /* For the Popover or Filter List */
