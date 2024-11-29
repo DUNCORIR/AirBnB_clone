@@ -10,13 +10,13 @@
 	text-align: left; /* Align title to the left */
 }
 
-/* Container for Places */
+/* Container for places */
 .places-container {
 	display: flex;
 	flex-wrap: wrap; /* Allow wrapping to next line */
 	justify-content: center; /* Center the items horizontally */
 	gap: 20px; /* Space between items */
-	margin-bottom: 120px; /* Add extra margin at the bottom to prevent overlap with the footer */
+    margin-bottom: 120px; /* Add extra margin at the bottom to prevent overlap with the footer */
 }
 
 /* Individual Place Article */
@@ -29,7 +29,7 @@
 	position: relative; /* For positioning elements like price */
 	flex-direction: column; /* Arrange content vertically */
 	box-sizing: border-box; /* Include padding and border in dimensions */
-	justify-content: space-between; /* Distribute content vertically */
+    display: flex;
 }
 
 /* Place Name (h2) */
@@ -132,4 +132,103 @@
 	align-self: left; /* Center it relative to the row above */
 	margin-bottom: 40px; /* Space below the name */
 
+}
+.amenities {
+    margin-top: 5px;
+}
+/* Title for Amenities Section */
+.amenities h2 {
+    margin-top: 0;
+    text-align: left;
+    border-bottom: 1px solid #DDDDDD;
+    margin-bottom: 0;
+}
+/* Adjust the list to reduce spacing */
+.amenities ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0; /* Remove default margin */
+    gap: 15px; /* Controls space between list items, adjust this if needed */
+}
+/* Individual Amenity List Item */
+.amenities li {
+    display: flex;
+	align-items: center;
+	font-size: 14px;
+    gap: 10px;
+    margin-bottom: 0; /* Remove bottom margin between list items */
+}
+
+/* Icons for Amenities */
+.amenities .icon {
+	width: 24px;
+	height: 24px;
+    display: flex;
+	background-size: cover;
+	margin-right: 10px;
+    margin-top: none;
+    
+}
+
+.icon.pet {
+	background-image: url('../images/icon_pets.png');
+}
+
+.icon.tv {
+	background-image: url('../images/icon_tv.png');
+}
+
+.icon.wifi {
+	background-image: url('../images/icon_wifi.png');
+}
+
+.icon.parking {
+	background-image: url('../images/icon_parking.png');
+}
+
+/* Reviews Section */
+.reviews {
+	margin-top: none;
+    padding-top: 10px;
+    text-align: left; /* Align reviews to the left */
+}
+
+.reviews h2 {
+	font-size: 14px;
+    display: flex;
+	border-bottom: 1px solid #DDDDDD;
+    padding-bottom: 5px; /* Padding below the title */
+    margin-bottom: 5px; /* Space below the title */
+}
+
+.reviews ul {
+	list-style: none;
+	padding: 0;
+    margin-bottom: none;
+}
+
+.reviews li {
+	margin-bottom: 5px;
+}
+
+.reviews h3 {
+	font-size: 14px;
+	margin-bottom: none;
+	color: #484848;
+    padding-top: 0;
+}
+
+.reviews p {
+	font-size: 14px;
+	color: #484848;
+}
+
+/* For the Popover or Filter List */
+.amenities .popover {
+    display: none; /* Hide by default */
+    list-style: none;
+    padding: 0;
+    margin: 0;
 }
