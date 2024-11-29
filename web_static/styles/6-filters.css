@@ -20,6 +20,7 @@
 	padding: 0 10px;
 	box-sizing: border-box;
 	justify-content: center;
+	position: relative; /* Relative positioning for popover */
 	display: flex; /* Use flexbox inside for vertical layout */
 	flex-direction: column; /* Stack items vertically */
 }
@@ -32,18 +33,18 @@
 /* Popup dropdown (ul with class popover) */
 .popover {
 	display: none; /* Hidden by default */
-	position: absolute;
 	top: 100%; /* Position just below the filter div */
 	left: 0;
+	position: absolute;
 	width: 100%; /* Full width of the parent div */
 	background-color: #FAFAFA;
-	border: 1px solid #DDDDDD;
+	border: 1px solid #DDDDDD;S
 	border-radius: 4px;
 	list-style-type: none;
-	padding: 0;
+	padding: 10px;
 	margin: 0;
 	box-sizing: border-box;
-	z-index: 10; /* Ensure it's on top */
+	z-index: 1000; /* Ensure it's on top */
 }
 
 .locations {
@@ -56,21 +57,17 @@
 }
 
 /* Titles and subtitles inside the filters */
-.locations h3, .amenities h3{
+h3 {
 	font-weight: 600; /* Bold for titles */
 	margin: 0;
 	font-size: 16px;
 }
 
-.locations h4, .amenities h4 {
+h4 {
 	font-weight: 400; /* Regular font weight */
 	font-size: 14px; /* Smaller font size for the subtitle */
 	margin: 0; /* Remove unnecessary margins */
 	margin-top: 0; /* Push subtitle to the bottom */
-}
-/* Show popover on hover */
-.locations:hover .popover, .amenities:hover .popover {
-	display: block;
 }
 
 /* Style for each list item inside the popover */

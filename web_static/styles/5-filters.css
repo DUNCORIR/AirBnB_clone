@@ -50,13 +50,13 @@
 }
 
 /* Titles and subtitles inside the filters */
-.locations h3, .amenities h3{
+h3 {
 	font-weight: 600; /* Bold for titles */
 	margin: 0;
 	font-size: 16px;
 }
 
-.locations h4, .amenities h4 {
+h4 {
 	font-weight: 400; /* Regular font weight */
 	font-size: 14px; /* Smaller font size for the subtitle */
 	margin: 0; /* Remove unnecessary margins */

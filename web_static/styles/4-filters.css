@@ -4,6 +4,7 @@
 	height: 70px;
 	width: 100%;  /* Full width of the container */
 	border-radius: 4px;
+	padding: 0 20px;
 	display: flex; /* Use flexbox for layout */
 	align-items: center; /* Centers items vertically */
 	justify-content: flex-end;  /* Space between filter sections */
