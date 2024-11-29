@@ -206,6 +206,7 @@
 .reviews ul {
 	list-style: none;
 	padding: 0;
+    display: flex;
     margin-bottom: none;
 }
 
@@ -215,6 +216,7 @@
 
 .reviews h3 {
 	font-size: 14px;
+    display: flex;
 	margin-bottom: none;
 	color: #484848;
     padding-top: 0;
@@ -222,6 +224,8 @@
 
 .reviews p {
 	font-size: 14px;
+    display: flex;
+    align-items: left;
 	color: #484848;
 }
 
