@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Task 12 - Accessibility</title>
+	<!-- Link to CSS files -->
+	<link rel="stylesheet" href="styles/103-common.css">
+	<link rel="stylesheet" href="styles/103-header.css">
+	<link rel="stylesheet" href="styles/103-footer.css">
+	<link rel="stylesheet" href="styles/103-filters.css">
+	<link rel="stylesheet" href="styles/103-places.css">
+	<!-- Link to icon -->
+	<link rel="icon" type="image/png" href="images/icon.png">
+</head>
+
+<body>
+	<!-- Header -->
+	<header role="banner">
+		<div class="logo" aria-label="Best School Logo"></div>
+	</header>
+
+	<!-- Main content -->
+	<main role="main" class="container">
+		<!-- Filters Section -->
+		<section class="filters" aria-labelledby="filters-heading">
+			<h2 id="filters-heading">Search Filters</h2>
+
+			<!-- Location Filter -->
+			<div class="locations" role="region" aria-labelledby="location-heading">
+				<h3 id="location-heading">States</h3>
+				<h4>Arizona, California...</h4>
+				<ul class="popover" aria-label="Location options">
+					<li>
+						<h2>Arizona</h2>
+						<ul>
+							<li>Phoenix</li>
+							<li>Tucson</li>
+							<li>Flagstaff</li>
+						</ul>
+					</li>
+					<li>
+						<h2>California</h2>
+						<ul>
+							<li>Los Angeles</li>
+							<li>San Francisco</li>
+							<li>San Diego</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+
+			<!-- Amenities Filter -->
+			<div class="amenities" role="region" aria-labelledby="amenities-heading">
+				<h3 id="amenities-heading">Amenities</h3>
+				<h4>Internet, Kitchen...</h4>
+				<ul class="popover" aria-label="Amenities options">
+					<li>Internet</li>
+					<li>Kitchen</li>
+					<li>Parking</li>
+				</ul>
+			</div>
+
+			<!-- Search Button -->
+			<button class="search-btn" aria-label="Search for available places">Search</button>
+		</section>
+
+		<!-- Places Section -->
+		<section class="places" aria-labelledby="places-heading">
+			<h1 id="places-heading">Available Places</h1>
+			<div class="places-container">
+				<!-- Place Listings -->
+				<article aria-labelledby="place-1-title">
+					<h2 id="place-1-title">My home</h2>
+					<div class="price_by_night" aria-label="Price per night">$80</div>
+					<div class="information">
+						<div class="max_guest" aria-label="Maximum guests">
+							<div class="icon" aria-hidden="true"></div>
+							<p>2 Guests</p>
+						</div>
+						<div class="number_rooms" aria-label="Number of rooms">
+							<div class="icon" aria-hidden="true"></div>
+							<p>1 Bedroom</p>
+						</div>
+						<div class="number_bathrooms" aria-label="Number of bathrooms">
+							<div class="icon" aria-hidden="true"></div>
+							<p>1 Bathroom</p>
+						</div>
+					</div>
+					<div class="user">
+						<strong>Owner:</strong> Duncan Too
+					</div>
+					<div class="description">
+						A lovely house in the city center, perfect for families and friends.
+					</div>
+				</article>
+			</div>
+		</section>
+	</main>
+
+	<!-- Footer -->
+	<footer role="contentinfo">
+		<p>Best School</p>
+	</footer>
+</body>
+</html>

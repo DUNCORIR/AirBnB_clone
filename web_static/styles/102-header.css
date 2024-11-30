@@ -1,0 +1,23 @@
+/* Header for larger screens */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+    padding: 0 20px;
+  }
+  
+  /* Adjust header for smaller screens */
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      height: auto;
+      padding: 10px;
+    }
+  
+    .logo {
+      width: 100%;
+      height: auto;
+      background-size: contain;
+    }
+  }  

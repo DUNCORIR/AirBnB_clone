@@ -1,0 +1,16 @@
+footer {
+    background-color: #FFFFFF;
+    color: #484848;
+    height: 60px;
+    border-top: 1px solid #CCCCCC;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+  }
+  
+  /* Footer focus state */
+  footer:focus {
+    outline: 2px dashed #0056b3;
+  }
+  

@@ -1,0 +1,22 @@
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px; /* Increased base font size for readability */
+    line-height: 1.5; /* Improved line height */
+    color: #333; /* Darker color for better contrast */
+    background-color: #f8f9fa; /* Light background for contrast */
+    margin: 0;
+    padding: 0;
+  }
+  
+  .container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 15px;
+  }
+  
+  /* Global focus styles */
+  button:focus, a:focus, input:focus {
+    outline: 2px solid #0056b3; /* Visible focus outline */
+    outline-offset: 2px;
+  }
+  

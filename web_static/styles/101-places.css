@@ -1,0 +1,119 @@
+/* Places Section */
+.places {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Title for Places Section */
+.places h1 {
+    font-size: 30px; /* Large font size for the title */
+    margin: 20px 0; /* Spacing below the title */
+    text-align: left; /* Align title to the left */
+}
+
+/* Places Container - Flexbox Layout */
+.places-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping to next line */
+    justify-content: center; /* Center the items horizontally */
+    gap: 20px; /* Space between items */
+    margin-bottom: 120px; /* Prevent overlap with the footer */
+}
+
+/* Individual Place Article - Flexbox Layout */
+.places-container article {
+    width: 390px; /* Set width of each place card */
+    padding: 20px;
+    border: 1px solid #FF5A5F;
+    border-radius: 4px;
+    text-align: center;
+    display: flex; /* Apply Flexbox to article */
+    flex-direction: column; /* Stack content vertically */
+    justify-content: flex-start; /* Start content from the top */
+    box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Add hover effect */
+}
+
+/* Hover Effect for Place Article */
+.places-container article:hover {
+    transform: translateY(-5px); /* Slight lift on hover */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+}
+
+/* Place Name (h2) */
+.places-container article h2 {
+    font-size: 30px;
+    margin-top: 0;
+    text-align: center;
+}
+
+/* Price by Night - Positioned in Top-Right Corner */
+.price_by_night {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: white;
+    color: #FF5A5F;
+    font-size: 25px;
+    height: 60px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 4px solid #FF5A5F;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* Information Section Layout - Flexbox */
+.information {
+    height: 80px;
+    border-top: 1px solid #DDDDDD;
+    border-bottom: 1px solid #DDDDDD;
+    display: flex;
+    align-items: center;
+    justify-content: space-around; /* Evenly spaced items */
+}
+
+/* Individual Information Items - Flexbox */
+.max_guest,
+.number_rooms,
+.number_bathrooms {
+    width: auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Description Section */
+.description {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #484848;
+    line-height: 1.5;
+    text-align: left; /* Align text to the left */
+}
+
+/* Responsive Layout for Smaller Screens */
+@media (max-width: 768px) {
+    .places-container {
+        flex-direction: column; /* Stack articles vertically on small screens */
+        align-items: center;
+    }
+
+    .places-container article {
+        width: 100%; /* Full width on small screens */
+        max-width: 500px; /* Limit max width for readability */
+    }
+}
+
+/* Responsive Layout for Tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .places-container article {
+        width: 48%; /* Two columns on tablets */
+    }
+}

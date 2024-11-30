@@ -29,6 +29,7 @@
 	position: relative; /* For positioning elements like price */
 	flex-direction: column; /* Arrange content vertically */
 	box-sizing: border-box; /* Include padding and border in dimensions */
+	display: flex;
 	justify-content: space-between; /* Distribute content vertically */
 }
 
@@ -36,7 +37,6 @@
 .places-container article h2 {
 	font-size: 30px; /* Larger font size for place name */
 	margin-top: 0; /* Give some space above the name */
-	margin-bottom: 40px; /* Space below the name */
 	text-align: center;
 }
 
@@ -86,7 +86,7 @@
 	width: 24px;
 	height: 24px;
 	background-size: cover;
-	margin-bottom: 0;
+	margin-top: 10px;
 }
 
 .number_rooms .icon {
@@ -94,7 +94,7 @@
 	width: 24px;
 	height: 24px;
 	background-size: cover;
-	margin-bottom: 0;
+	margin-top: 10px;
 }
 
 .number_bathrooms .icon {
@@ -102,7 +102,7 @@
 	width: 24px;
 	height: 24px;
 	background-size: cover;
-	margin-bottom: 0;
+	margin-top: 10px;
 }
 
 /* User section - Owner information */

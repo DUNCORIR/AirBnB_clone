@@ -1,0 +1,24 @@
+/* Filters for larger screens */
+.filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+  }
+  
+  /* Responsive filters for small screens */
+  @media (max-width: 768px) {
+    .filters {
+      flex-direction: column;
+      height: auto;
+      gap: 10px;
+    }
+  
+    .search-box {
+      width: 100%;
+    }
+  
+    .search-btn {
+      width: 100%;
+    }
+  }  

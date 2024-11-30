@@ -1,0 +1,17 @@
+/* Default container for large screens */
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 15px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+  }
+  
+  /* Responsive layout for smaller screens */
+  @media (max-width: 768px) {
+    .container {
+      max-width: 100%;
+      padding: 0 10px;
+    }
+  }  
